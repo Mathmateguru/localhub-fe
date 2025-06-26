@@ -1,15 +1,14 @@
 .signup_page {
     display: flex;
     justify-content: center;
-    margin-bottom: 150px;
 }
 
 .signup_form {
-    height: 700px;
     width: 450px;
     border: 1px rgb(221, 215, 215) solid;
     border-radius: 8px;
     margin-top: 130px;
+    padding: 20px
 }
 
 .font {
@@ -29,30 +28,23 @@
 .signup_header {
     font-size: x-large;
     font-weight: 500;
+    text-align: center;
 }
 
-.wrapper_sub_header {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
+
 
 .signup_sub_header {
     font-size: medium;
     font-weight: 300;
     color: rgb(103, 101, 101);
+    text-align: center;
 }
 
-.wrapper_form {
-    margin-left: 25px;
-}
 
-.form_input,
-.form_input2,
-.form_input3,
-.form_input4 {
+
+.form_input{
     height: 40px;
-    width: 400px;
+    width: 100%;
     margin-top: 10px;
     margin-bottom: 15px;
     padding-left: 12px;
