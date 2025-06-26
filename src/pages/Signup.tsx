@@ -1,5 +1,4 @@
-import { Users } from 'lucide-react';
-import { Eye } from 'lucide-react';
+import { Users, Eye } from 'lucide-react';
 import "./Signup.css";
 
 const Signup = () => {
