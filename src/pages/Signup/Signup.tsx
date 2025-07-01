@@ -12,18 +12,18 @@ const Signup = () => {
         <p className="signup_sub_header">Create your account to start connecting</p>
         <div >
           <div>
-            <label htmlFor='name'>Name</label>
-            <input id='name' type="text" placeholder="Enter your full name" className="form_input" />
+            <label htmlFor="name">Name</label>
+            <input id="name" type="text" placeholder="Enter your full name" className="form_input" />
           </div>
 
           <div>
-          <label htmlFor="name">Email</label>
-          <input id="name" type="text" placeholder="Enter your email" className="form_input" />
+          <label htmlFor="email">Email</label>
+          <input id="email" type="text" placeholder="Enter your email" className="form_input" />
           </div>
 
           <div>
-            <label htmlFor='password'>Password</label>
-            <input id='password' type="password" className="form_input" />
+            <label htmlFor="password">Password</label>
+            <input id="password" type="password" className="form_input" />
             {/* <Eye size={20} className="eye_icon" /> */}
           </div>
           <div>
