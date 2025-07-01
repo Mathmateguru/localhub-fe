@@ -16,8 +16,11 @@ const Signup = () => {
             <input id='name' type="text" placeholder="Enter your full name" className="form_input" />
           </div>
 
-          <h2>Email</h2>
-          <input type="text" placeholder="Enter your email" className="form_input" />
+          <div>
+          <label htmlFor="name">Email</label>
+          <input id="name" type="text" placeholder="Enter your email" className="form_input" />
+          </div>
+
           <div>
             <label htmlFor='password'>Password</label>
             <input id='password' type="password" className="form_input" />
