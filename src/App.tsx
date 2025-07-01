@@ -2,7 +2,7 @@ import './App.css'
 import { Routes, Route } from "react-router";
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
-import Signup from './pages/Signup';
+import Signup from './pages/Signup/Signup';
 import Signin from './pages/Signin/Signin';
 
 function App() {
