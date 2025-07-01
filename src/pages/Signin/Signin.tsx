@@ -1,10 +1,37 @@
 import './signin.css'
 import { Users } from 'lucide-react'
+import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
+const baseURL = import.meta.env.VITE_API_URL;
 
 
 const Signin = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const data = { email, password }
+    setLoading(true);
+    try {
+      const res = await axios.get(`${baseURL}/sigin`, data);
+      setLoading(false);
+      if (res.data.status === 'success') {
+        toast(res.data.message, { type: 'success' });
+      }
+    } catch (error: any) {
+      setLoading(false);
+      if (error?.response.data.status === 'error') {
+        toast(error?.response.data.message, { type: 'error' });
+
+      }
+    }
+  }
 
   return (
     <div className='main-wrapper'>
@@ -17,15 +44,16 @@ const Signin = () => {
         <div>
           <div>
             <label htmlFor='email'>Email</label>
-            <input id='email' type="text" placeholder="abcd@gmail.com" className="form_input" />
+            <input onChange={(e) => setEmail(e.target.value)} id='email' type="text" placeholder="abcd@gmail.com" className="form_input" />
           </div>
 
 
           <h3 className='password-header'>Password</h3>
-          <input type="password" placeholder=' Enter your password' className='form_input' />
+          <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder=' Enter your password' className='form_input' />
 
 
-          <button className='signin-btn'>Sign In</button>
+          <button disabled={loading}
+              onClick={handleSubmit} className='signin-btn'>{loading ? 'Loading...' : 'Sign In'}</button>
 
           <div className='footer'>
             <p className='footer-txt1'>Don't have an account?</p>
