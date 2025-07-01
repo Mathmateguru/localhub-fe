@@ -49,7 +49,7 @@ const Signup = () => {
           </div>
           <div>
             <label htmlFor="email">Email</label>
-            <input onChange={(e) => setName(e.target.value)}
+            <input onChange={(e) => setEmail(e.target.value)}
               id="email" type="text" placeholder="Enter your email" className="form_input" />
           </div>
           <div>
