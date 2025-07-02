@@ -13,15 +13,16 @@ const Signin = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const data = { email, password }
     setLoading(true);
     try {
-      const res = await axios.get(`${baseURL}/sigin`, data);
+      const res = await axios.post(`${baseURL}/login`, data);
       setLoading(false);
-      if (res.data.status === 'success') {
+      if (res.data.status === 'success') { 
+        localStorage.setItem('localhubToken', res.data.accessToken)
         toast(res.data.message, { type: 'success' });
       }
     } catch (error: any) {
