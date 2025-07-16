@@ -1,0 +1,18 @@
+
+.side_bar{
+height: 100%;
+width: 250px;
+background-color: whitesmoke;
+
+}
+
+.row  #side_bar_icon{
+flex: 30%;
+display: grid;
+place-items: center;
+}
+
+.row  #side_bar_title{
+    flex: 70%;
+    
+    }
