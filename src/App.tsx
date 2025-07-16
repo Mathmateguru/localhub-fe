@@ -12,11 +12,14 @@ function App() {
   return (
     <div>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/feeds" element={<Feeds />} />
+
+
         {/* Add other routes here as needed */}
       </Routes>
     </div>

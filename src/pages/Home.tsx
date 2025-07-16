@@ -1,8 +1,14 @@
+import SideBar from '../components/Sidebar'
+import './Home.css';
 
+function Home(){
+  return(
+    <div className='home'> 
 
-const Home = () => {
-  
-  return <div>Home</div>;
-};
+      <SideBar />
+
+    </div>
+  )
+}
 
 export default Home;
