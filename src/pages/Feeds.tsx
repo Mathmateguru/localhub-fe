@@ -1,5 +1,6 @@
 import React from "react";
 import CreateCommunityForm from "../components/CreateCommunityForm";
+import SideBar from "../components/Sidebar/Sidebar";
 
 const Feeds = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -9,7 +10,7 @@ const Feeds = () => {
 
   return( 
   <div className="">
-    {/* SideBar */}
+    <SideBar />
     <section className="">
      <h2 className="text-6xl mt-4 text-center">Join Our Communities</h2>
      <p className="text-2xl text-center text-gray-400 my-2.5">Discover and join amazing communities where you can connect, share, and grow together.</p>

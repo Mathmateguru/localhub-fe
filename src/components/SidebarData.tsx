@@ -1,9 +1,8 @@
 import { House} from 'lucide-react'
-import './SidebarData.css';
 
 
 
-export const SidebarData =[
+export const SidebarData = [
     {
         title: 'Group',
         icon: <House />,

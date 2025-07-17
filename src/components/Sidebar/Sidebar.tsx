@@ -1,5 +1,5 @@
 import './Sidebar.css';
-import { SidebarData } from './SidebarData';
+import { SidebarData } from '../SidebarData';
 import { useNavigate, useLocation } from 'react-router'
 
 function SideBar() {
