@@ -9,7 +9,7 @@ const Feeds = () => {
   const handleOpen = () => setIsOpen(true);
 
   return( 
-  <div className="">
+  <div className="h-screen">
     <SideBar />
     <section className="">
      <h2 className="text-6xl mt-4 text-center">Join Our Communities</h2>

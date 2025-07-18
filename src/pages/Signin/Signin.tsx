@@ -3,6 +3,8 @@ import { Users } from 'lucide-react'
 import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
+import { useUserContext } from '../../contexts/userContext';
 
 
 const baseURL = import.meta.env.VITE_API_URL;
@@ -12,7 +14,8 @@ const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
+const { updateAuthentication } = useUserContext();
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +26,9 @@ const Signin = () => {
       setLoading(false);
       if (res.data.status === 'success') { 
         localStorage.setItem('localhubToken', res.data.accessToken)
-        toast(res.data.message, { type: 'success' });
+        updateAuthentication(true);
+        navigate('/feeds');
+        // toast(res.data.message, { type: 'success' });
       }
     } catch (error: any) {
       setLoading(false);
