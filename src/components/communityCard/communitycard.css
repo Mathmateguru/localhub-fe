@@ -1,0 +1,98 @@
+
+.main-card{
+
+    width: 500px;
+    border: 1px rgb(221, 215, 215) solid;
+    height: 300px;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.sub-main-card{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+
+.first-line{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+}
+
+.text{
+    font-size: larger;
+
+}
+
+.text2{
+    color: #2facac;
+}
+
+.badge{
+
+    color: #2facac;
+
+}
+
+.intro{
+    padding-top:35px ;
+}
+
+
+.tech{
+    margin-right: 5px;
+}
+
+.u-icon{
+    display: flex;
+    justify-content: space-between;
+    width: 135px;
+    padding-top: 20px;
+
+}
+
+.m-icon{
+    display: flex;
+    justify-content: space-between;
+    width: 85px;
+    padding-top: 20px;
+
+}
+
+.um-icon-wrapper{
+    display:flex;
+    justify-content: space-between;
+
+}
+
+.footer{
+    display: flex;
+    padding-top: 30px;
+    justify-content: space-between;
+}
+
+
+.card-btn{
+    height: 40px;
+    width: 150px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
