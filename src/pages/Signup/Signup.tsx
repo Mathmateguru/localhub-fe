@@ -3,6 +3,7 @@ import "./Signup.css";
 import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import {useNavigate} from "react-router"
 
 const baseURL = import.meta.env.VITE_API_URL;
 
@@ -12,7 +13,8 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-
+  
+  const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,6 +25,7 @@ const Signup = () => {
       setLoading(false);
       if (res.data.status === 'success') {
         toast(res.data.message, { type: 'success' });
+        navigate("/signin")
       }
     } catch (error: any) {
       setLoading(false);
