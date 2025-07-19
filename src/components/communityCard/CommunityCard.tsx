@@ -1,5 +1,5 @@
 
-import React from 'react';
+
 import { Users } from 'lucide-react';
 import { MessageSquare } from 'lucide-react';
 import { BadgeInfo } from 'lucide-react';
