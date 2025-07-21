@@ -2,29 +2,25 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 const UserContext = createContext({
     isAuthenticated: false,
-    updateAuthentication: (status: boolean) => {}
+    updateAuthentication: (status: boolean) => { }
 });
 
 
-interface UserContextProps {   
+interface UserContextProps {
     children: React.ReactNode;
 }
 // producer
 const UserProvider = ({ children }: UserContextProps) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const token = localStorage.getItem("localhubToken");
 
-    useEffect(() => {
-        const token = localStorage.getItem("localhubToken");
-        if (token) {
-            setIsAuthenticated(!!token);
-        }   
-    }, [])
-const updateAuthentication = (status: boolean) => {
-    setIsAuthenticated(status);
-}
+    const [isAuthenticated, setIsAuthenticated] = useState(Boolean(token))
+
+    const updateAuthentication = (status: boolean) => {
+        setIsAuthenticated(status);
+    }
 
     return (
-        <UserContext.Provider value={{isAuthenticated, updateAuthentication}}>
+        <UserContext.Provider value={{ isAuthenticated, updateAuthentication }}>
             {children}
         </UserContext.Provider>
     )

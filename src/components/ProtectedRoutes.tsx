@@ -9,15 +9,8 @@ interface ProtectedRoutesProps {
 }
 const ProtectedRoutes = ({ children }: ProtectedRoutesProps) => {
 const {isAuthenticated} = useUserContext();
-
-console.log(isAuthenticated, 'isAuthenticated in ProtectedRoutes');
-
-    if (!isAuthenticated) {
-        return <Navigate to="/signin" replace />;
-    }
-
     
-  return <>{children}</>;
+  return  isAuthenticated ? children : <Navigate to="/signin" replace />;
 };
 
 export default ProtectedRoutes;

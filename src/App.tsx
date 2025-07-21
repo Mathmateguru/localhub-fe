@@ -24,7 +24,6 @@ function App() {
           element={
             <ProtectedRoutes>
               <Feeds />
-              
             </ProtectedRoutes>
           } />
 
