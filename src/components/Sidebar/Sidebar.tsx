@@ -1,25 +1,34 @@
 import './Sidebar.css';
-import { SidebarData } from '../SidebarData';
 import { useNavigate, useLocation } from 'react-router'
+import {  useEffect, useState } from 'react';
+import { getCommunities } from '../../services/community';
+import { useQuery } from '@tanstack/react-query';
+
 
 function SideBar() {
-  const navigate = useNavigate();
-  const location = useLocation();
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
+const {data , isLoading} = useQuery({
+  queryKey: ['community'],
+  queryFn: getCommunities,
+});
+
+
+if(isLoading) {
+  return <div>Fetching communities...</div>
+}
+const communities = data.data || [];
   return (
     <div className='side_bar'>
-      <ul className='side_bar_list'>
-        {SidebarData.map((val, key) => {
-          return (
-            <li key={key}
-              className='row'
-              id={location.pathname == val.link ? 'active' : ''}
-              onClick={() => navigate(val.link)}>
-              <div id='side_bar_icon'>{val.icon}</div> {' '}
-              <div id='side_bar_title'>{val.title} </div>{' '}
-            </li>
-          );
-        })}
+      <ul className='flex flex-col gap-2 p-3'>
+       {communities.map((community) => (
+        <li 
+        className='cursor-pointer'
+        key={community._id}>
+          {community.name}
+          </li>
+       ))}
       </ul>
     </div>
   )

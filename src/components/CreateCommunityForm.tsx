@@ -1,28 +1,67 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
+import { uploadImage } from '../services/uploadImage';
+import { createCommunity } from '../services/community';
+import {useMutation, useQueryClient} from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 
 interface CreateCommunityFormProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit?: (data: { name: string; description: string; image: File | null; isPublic: boolean }) => void;
 }
 
-const CreateCommunityForm: React.FC<CreateCommunityFormProps> = ({ isOpen, onClose, onSubmit }) => {
+const CreateCommunityForm: React.FC<CreateCommunityFormProps> = ({ isOpen, onClose }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState<File | null>(null);
+  const [image, setImage] = useState<string | null>(null);
   const [isPublic, setIsPublic] = useState(true);
+  const queryClient = useQueryClient();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (onSubmit) {
-      onSubmit({ name, description, image, isPublic });
+  const mutation = useMutation({
+    mutationFn: createCommunity,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['community'] }); // update cache 
+      emptyAllFields();
+      toast.success('Community created successfully!');
+    },
+    onError: (error) => {
+      console.error('Error creating community:', error);
+      toast.error('Failed to create community. Please try again.');
     }
+  });
+
+const emptyAllFields = () => {
+    setName('');
+    setDescription('');
+    setImage(null);
+    setIsPublic(true);
     onClose();
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+
+    const communityData = {
+      name,
+      description,
+      image: image || '',
+      isPublic
+    }
+   return mutation.mutate(communityData)
+  };
+
+
+const selectImage = async (file: File | null) => {
+  const res = await uploadImage(file as File);
+  if(res.status === 'success') {
+    setImage(res.imageUrl);
+  } 
+};
+
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
+      <>
       <h2 className="text-2xl font-bold mb-4 text-gray-800">Create Community</h2>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
@@ -51,7 +90,7 @@ const CreateCommunityForm: React.FC<CreateCommunityFormProps> = ({ isOpen, onClo
           <input
             type="file"
             accept="image/*"
-            onChange={e => setImage(e.target.files?.[0] || null)}
+            onChange={e => selectImage(e.target.files?.[0] || null)}
             className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-black-50 file:text-black-700 hover:file:bg-black-100"
           />
         </div>
@@ -74,6 +113,7 @@ const CreateCommunityForm: React.FC<CreateCommunityFormProps> = ({ isOpen, onClo
           Create
         </button>
       </form>
+      </>
     </Modal>
   );
 };

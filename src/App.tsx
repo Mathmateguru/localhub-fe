@@ -7,11 +7,13 @@ import Signin from './pages/Signin/Signin';
 import Feeds from './pages/Feeds';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import UserProvider from './contexts/userContext';
+import {QueryClientProvider, QueryClient} from '@tanstack/react-query'
 
 function App() {
-
+const queryClient = new QueryClient();
 
   return (
+    <QueryClientProvider client={queryClient}>
     <UserProvider>
       <Navbar />
 
@@ -31,6 +33,7 @@ function App() {
         {/* Add other routes here as needed */}
       </Routes>
     </UserProvider>
+    </QueryClientProvider>
   )
 }
 
