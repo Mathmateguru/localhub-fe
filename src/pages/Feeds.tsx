@@ -2,12 +2,31 @@ import React from "react";
 import CreateCommunityForm from "../components/CreateCommunityForm";
 import SideBar from "../components/Sidebar/Sidebar";
 import CommunityCard from "../components/communityCard/CommunityCard";
+import { getCommunities } from "../services/community";
+import { useQuery } from "@tanstack/react-query";
+
 const Feeds = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const {data , isLoading} = useQuery({
+    queryKey: ['community'],
+    queryFn: getCommunities,
+  });
+
   const handleClose = () => setIsOpen(false);
 
   const handleOpen = () => setIsOpen(true);
-const communities = []
+
+  
+
+
+
+  if(isLoading) {
+    return <div>Fetching communities...</div>
+  }
+   
+  
+ const communities = data.data || [];
+
   return (
     <div className="h-screen flex">
       <SideBar />
@@ -22,15 +41,12 @@ const communities = []
           </div>
         </section>
         <section className="flex flex-wrap mt-8 gap-2">
-          <div className="w-[30%]">
-            <CommunityCard />
+          {communities.map((community) =>(
+            <div className="w-[30%]" key={community._id}>
+            <CommunityCard  community= {community} />
           </div>
-          <div className="w-[30%]">
-            <CommunityCard />
-          </div>
-          <div className="w-[30%]">
-            <CommunityCard />
-          </div>
+          )
+        )}
         </section>
 
       </div>
