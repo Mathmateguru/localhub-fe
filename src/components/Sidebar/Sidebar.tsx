@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 
 
 function SideBar() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // const location = useLocation();
 
 const {data , isLoading} = useQuery({
@@ -25,7 +25,9 @@ const communities = data.data || [];
        {communities.map((community) => (
         <li 
         className='cursor-pointer'
-        key={community._id}>
+        key={community._id}  
+        onClick={()=> navigate(`/feeds/${community._id}`)}
+        >
           {community.name}
           </li>
        ))}
