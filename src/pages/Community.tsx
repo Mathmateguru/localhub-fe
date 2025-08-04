@@ -1,19 +1,28 @@
 import { useParams } from 'react-router'
 import SideBar from '../components/Sidebar/Sidebar';
 import PostCard from '../components/PostCard';
+import CreatePostForm from '../components/CreatePostForm';
+import { useState } from 'react';
 
 const Community = () => {
-    const { communityId } = useParams();
+  const { communityId } = useParams();
+  const [open, setOpen]= useState(false)
 
-    return (
-        <div className='flex space-x-4 '   >
-            <SideBar />
-            <div className='flex-1 p-4 border border-gray-100 h-full mt-3 space-y-5'>
-                {fakePosts.map(item => <PostCard post ={item}/>)}
-                
-            </div>
+  return (
+    <div className='flex space-x-4 '   >
+      <SideBar />
+      <main className='flex flex-col justify-center'>
+        <div className='flex gap-2 ' >
+          <button  className='bg-black text-white py-2 px-4 font-bold rounded flex-1'>Join Community</button>
+          <button className='bg-black text-white py-2 px-4 font-bold rounded' onClick={()=>setOpen(true)}> Create a post </button>
         </div>
-    )
+        <div className='flex-1 p-4 border border-gray-100 h-full mt-3 space-y-5'>
+          {fakePosts.map(item => <PostCard post={item} />)}
+        </div>
+      </main>
+        <CreatePostForm isOpen={open} onClose={()=>setOpen(false)}/>
+    </div>
+  )
 }
 
 export default Community;
