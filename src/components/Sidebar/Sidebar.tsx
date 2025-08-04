@@ -20,7 +20,7 @@ if(isLoading) {
 }
 const communities = data.data || [];
   return (
-    <div className='side_bar'>
+    <div className='bg-[#f6f3f4] w-[250px] h-screen'>
       <ul className='flex flex-col gap-2 p-3'>
        {communities.map((community) => (
         <li 
