@@ -3,15 +3,20 @@ import SideBar from '../components/Sidebar/Sidebar';
 import PostCard from '../components/PostCard';
 import CreatePostForm from '../components/CreatePostForm';
 import { useState } from 'react';
+import CommunityExtension from '../components/CommunityCardExtension/CommunityExtension';
+
 
 const Community = () => {
   const { communityId } = useParams();
   const [open, setOpen]= useState(false)
 
   return (
-    <div className='flex space-x-4 '   >
+    <div className='flex space-x-4 '>
       <SideBar />
+      
       <main className='flex flex-col justify-center'>
+      <CommunityExtension community={undefined} />
+
         <div className='flex gap-2 ' >
           <button  className='bg-black text-white py-2 px-4 font-bold rounded flex-1'>Join Community</button>
           <button className='bg-black text-white py-2 px-4 font-bold rounded' onClick={()=>setOpen(true)}> Create a post </button>
