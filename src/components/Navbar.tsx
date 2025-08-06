@@ -17,7 +17,7 @@ const {isAuthenticated, updateAuthentication} = useUserContext();
   };
 
   return (
-    <div className="bg-gray-100 p-4 flex justify-between items-center ">
+    <div className="bg-gray-100 p-4 flex justify-between items-center border-b border-b-gray-300">
       <div className='flex items-center gap-2' onClick={() => navigate('/')}>
 
         <Users size={24} />

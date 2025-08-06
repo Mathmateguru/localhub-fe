@@ -25,10 +25,8 @@ const { updateAuthentication } = useUserContext();
       const res = await axios.post(`${baseURL}/login`, data);
       setLoading(false);
       if (res.data.status === 'success') { 
-        localStorage.setItem('localhubToken', res.data.accessToken)
-        updateAuthentication(true);
-        navigate('/feeds');
-        // toast(res.data.message, { type: 'success' });
+       const token = res.data.accessToken;
+        updateAuthentication(true, token);        navigate('/feeds');
       }
     } catch (error: any) {
       setLoading(false);

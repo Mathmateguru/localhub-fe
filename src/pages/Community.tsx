@@ -13,16 +13,14 @@ const Community = () => {
   return (
     <div className='flex space-x-4 '>
       <SideBar />
-      
-      <main className='flex flex-col justify-center'>
-      <CommunityExtension community={undefined} />
-
+      <main className='flex flex-col justify-center w-full max-w-4xl p-4 mx-auto my-6'>
+          <CommunityExtension community={undefined} />
         <div className='flex gap-2 ' >
           <button  className='bg-black text-white py-2 px-4 font-bold rounded flex-1'>Join Community</button>
           <button className='bg-black text-white py-2 px-4 font-bold rounded' onClick={()=>setOpen(true)}> Create a post </button>
         </div>
         <div className='flex-1 p-4 border border-gray-100 h-full mt-3 space-y-5'>
-          {fakePosts.map(item => <PostCard post={item} />)}
+          {fakePosts.map((item, i) => <PostCard key={i} post={item} />)}
         </div>
       </main>
         <CreatePostForm isOpen={open} onClose={()=>setOpen(false)}/>
