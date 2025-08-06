@@ -21,7 +21,7 @@ function SideBar() {
   return (
     <div className='bg-gray-100 w-[300px] '>
       <ul className='flex flex-col gap-2 p-3 py-8'>
-        {communities.map((community) => (
+        {communities?.map((community) => (
           <li
             className={`cursor-pointer py-1 px-1 hover:bg-gray-300 ${community._id === communityId ? 'font-bold' : ''
               }`}

@@ -10,6 +10,7 @@ const getHeaders = () => {
   };
 };
 
+
 const getCommunities = async () => {
   try {
     const res = await axios.get(`${baseURL}/community`, { headers: getHeaders() });
@@ -18,7 +19,18 @@ const getCommunities = async () => {
     console.error('Error fetching communities:', error);
     throw error;
   }
-};
+
+  }
+  const getCommunity = async (id : string) => {
+    try {
+      const res = await axios.get(`${baseURL}/community/${id}`, { headers: getHeaders() });
+      return res.data;
+    } catch (error) {
+      console.error('Error fetching communities:', error);
+      throw error;
+    }
+    }
+
 
 interface CommunityData {
   name: string;
@@ -36,5 +48,5 @@ const createCommunity = async (communityData: CommunityData) => {
   }
 };
 
-export { getCommunities, createCommunity };
+export { getCommunities, createCommunity, getCommunity };
 
