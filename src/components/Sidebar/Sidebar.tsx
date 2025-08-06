@@ -5,10 +5,10 @@ import { useQuery } from '@tanstack/react-query';
 
 function SideBar() {
   const navigate = useNavigate();
-  const { communityId } = useParams();
+  const { communityId =""} = useParams();
 
   const { data, isLoading } = useQuery({
-    queryKey: ['community'],
+    queryKey: ['communities'],
     queryFn: getCommunities,
   });
 
@@ -17,6 +17,8 @@ function SideBar() {
     return <div>Fetching communities...</div>
   }
   const communities = data.data || [];
+    console.log(data.data, '++++++data.data+++++++');
+
 
   return (
     <div className='bg-gray-100 w-[300px] '>

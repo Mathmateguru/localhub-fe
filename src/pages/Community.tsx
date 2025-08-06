@@ -13,13 +13,12 @@ const Community = () => {
   const [open, setOpen]= useState(false)
   const {data, isLoading} = useQuery({
     queryFn : () => getCommunity(communityId || ''),
-    queryKey : ['community'],
+    queryKey : ['community', communityId],
     enabled : !!communityId
   })
   if(isLoading){
    return <div>Loading...</div>
   }
-  console.log(data.data, '+++++++++++++');
   return (
     <div className='flex space-x-4 '>
       <SideBar />
