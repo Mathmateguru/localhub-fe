@@ -4,17 +4,26 @@ import PostCard from '../components/PostCard';
 import CreatePostForm from '../components/CreatePostForm';
 import { useState } from 'react';
 import CommunityExtension from '../components/CommunityCardExtension/CommunityExtension';
+import { useQuery } from '@tanstack/react-query';
+import { getCommunity } from '../services/community';
 
 
 const Community = () => {
   const { communityId } = useParams();
   const [open, setOpen]= useState(false)
-
+  const {data, isLoading} = useQuery({
+    queryFn : () => getCommunity(communityId || ''),
+    queryKey : ['community', communityId],
+    enabled : !!communityId
+  })
+  if(isLoading){
+   return <div>Loading...</div>
+  }
   return (
     <div className='flex space-x-4 '>
       <SideBar />
       <main className='flex flex-col justify-center w-full max-w-4xl p-4 mx-auto my-6'>
-          {/* <CommunityExtension community={undefined} /> */}
+          <CommunityExtension community={data.data} />
         <div className='flex gap-2 ' >
           <button  className='bg-black text-white py-2 px-4 font-bold rounded flex-1'>Join Community</button>
           <button className='bg-black text-white py-2 px-4 font-bold rounded' onClick={()=>setOpen(true)}> Create a post </button>
@@ -29,7 +38,6 @@ const Community = () => {
 }
 
 export default Community;
-
 
 
 

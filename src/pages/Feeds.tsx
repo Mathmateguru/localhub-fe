@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 const Feeds = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { data, isLoading } = useQuery({
-    queryKey: ['community'],
+    queryKey: ['communities'],
     queryFn: getCommunities,
   });
 
