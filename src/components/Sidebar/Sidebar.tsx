@@ -17,7 +17,6 @@ function SideBar() {
     return <div>Fetching communities...</div>
   }
   const communities = data.data || [];
-    console.log(data.data, '++++++data.data+++++++');
 
 
   return (

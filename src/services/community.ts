@@ -20,16 +20,16 @@ const getCommunities = async () => {
     throw error;
   }
 
+}
+const getCommunity = async (id: string) => {
+  try {
+    const res = await axios.get(`${baseURL}/community/${id}`, { headers: getHeaders() });
+    return res.data;
+  } catch (error) {
+    console.error('Error fetching communities:', error);
+    throw error;
   }
-  const getCommunity = async (id : string) => {
-    try {
-      const res = await axios.get(`${baseURL}/community/${id}`, { headers: getHeaders() });
-      return res.data;
-    } catch (error) {
-      console.error('Error fetching communities:', error);
-      throw error;
-    }
-    }
+}
 
 
 interface CommunityData {
@@ -48,5 +48,16 @@ const createCommunity = async (communityData: CommunityData) => {
   }
 };
 
-export { getCommunities, createCommunity, getCommunity };
+const getCommunityPosts = async (id: string) => {
+  try {
+  return await axios.get(`${baseURL}/community/${id}/posts`, { headers: getHeaders() });
+  } catch (error) {
+    console.log(error)
+    throw error;
+  }
+}
+
+
+
+export { getCommunities, createCommunity, getCommunity, getCommunityPosts };
 
