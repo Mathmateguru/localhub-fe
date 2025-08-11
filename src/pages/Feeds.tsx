@@ -1,6 +1,5 @@
 import React from "react";
 import CreateCommunityForm from "../components/CreateCommunityForm";
-import SideBar from "../components/Sidebar/Sidebar";
 import CommunityCard from "../components/communityCard/CommunityCard";
 import { getCommunities } from "../services/community";
 import { useQuery } from "@tanstack/react-query";
@@ -25,8 +24,7 @@ const Feeds = () => {
   const communities = data.data || [];
 
   return (
-    <div className="flex">
-      <SideBar />
+    <>
       <div className="w-full max-w-7xl p-4 mx-auto my-6 ">
         <section className="flex flex-col ">
           <h2 className="text-6xl mt-4 text-center">Join Our Communities</h2>
@@ -49,7 +47,7 @@ const Feeds = () => {
       </div>
 
       <CreateCommunityForm isOpen={isOpen} onClose={handleClose} />
-    </div>
+    </>
   );
 };
 

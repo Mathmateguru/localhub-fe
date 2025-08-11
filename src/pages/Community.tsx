@@ -1,5 +1,4 @@
 import { useParams } from 'react-router'
-import SideBar from '../components/Sidebar/Sidebar';
 import PostCard from '../components/PostCard';
 import CreatePostForm from '../components/CreatePostForm';
 import { useState } from 'react';
@@ -29,8 +28,7 @@ const Community = () => {
   }
 
   return (
-    <div className='flex space-x-4 '>
-      <SideBar />
+    <>
       <main className='flex flex-col justify-center w-full max-w-4xl p-4 mx-auto my-6'>
           <CommunityExtension community={data.data} />
         <div className='flex gap-2 ' >
@@ -42,7 +40,7 @@ const Community = () => {
         </div>
       </main>
         <CreatePostForm isOpen={open} onClose={()=>setOpen(false)}/>
-    </div>
+    </>
   )
 }
 

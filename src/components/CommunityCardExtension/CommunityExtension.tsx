@@ -13,6 +13,8 @@ community: Community
 }
 
 const CommunityExtension = ({community}:CommunityExtensionProps) => {
+  console.log(community.image, 'community.image');
+  
   return (
     <div className=' h-full border-gray-100 border-[1px] mb-7 mt-7 rounded '>
       <div className='flex pt-7'>
@@ -23,9 +25,9 @@ const CommunityExtension = ({community}:CommunityExtensionProps) => {
         </div>
       </div>
       <div className='flex items-center justify-center'>
-        <div className='h-80 w-[600px] my-6 rounded overflow-hidden'>
+        {community.image && <div className='h-80 w-[600px] my-6 rounded overflow-hidden'>
           <img src={community.image} alt='community banner' />
-        </div>
+        </div>}
       </div>
       <p className='px-5'>{community.description}</p>
       <div className='flex justify-between py-6'>
