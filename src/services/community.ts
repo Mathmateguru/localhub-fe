@@ -39,11 +39,25 @@ interface CommunityData {
   isPublic: boolean;
 }
 
+interface CreatePostData {
+  title: string;
+  content: string;
+  communityId: string;
+} 
+
 const createCommunity = async (communityData: CommunityData) => {
   try {
     return await axios.post(`${baseURL}/community`, communityData, { headers: getHeaders() });
   } catch (error) {
     console.error('Error creating community:', error);
+    throw error;
+  }
+};
+const createPost = async (postData: CreatePostData) => {
+  try {
+    return await axios.post(`${baseURL}/posts`, postData, { headers: getHeaders() });
+  } catch (error) {
+    console.error('Error creating post:', error);
     throw error;
   }
 };
@@ -58,6 +72,11 @@ const getCommunityPosts = async (id: string) => {
 }
 
 
-
-export { getCommunities, createCommunity, getCommunity, getCommunityPosts };
+export { 
+  getCommunities, 
+  createCommunity, 
+  getCommunity, 
+  getCommunityPosts,
+  createPost
+ };
 

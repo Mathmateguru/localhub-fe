@@ -39,7 +39,7 @@ const Community = () => {
           {postData?.data.data.map((item, i) => <PostCard key={i} post={item} />)}
         </div>
       </main>
-        <CreatePostForm isOpen={open} onClose={()=>setOpen(false)}/>
+        <CreatePostForm isOpen={open} onClose={()=>setOpen(false)} communityId={communityId as string}/>
     </>
   )
 }
