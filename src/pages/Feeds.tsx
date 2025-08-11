@@ -3,6 +3,7 @@ import CreateCommunityForm from "../components/CreateCommunityForm";
 import CommunityCard from "../components/communityCard/CommunityCard";
 import { getCommunities } from "../services/community";
 import { useQuery } from "@tanstack/react-query";
+import type { ICommuntity } from "../types";
 
 const Feeds = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -36,7 +37,7 @@ const Feeds = () => {
           </div>
         </section>
         <section className="flex flex-wrap mt-8 gap-2 ">
-          {communities.map((community) => (
+          {communities.map((community: ICommuntity) => (
             <div className="w-[32%]" key={community._id}>
               <CommunityCard community={community} />
             </div>

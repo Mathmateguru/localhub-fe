@@ -1,5 +1,5 @@
 import { useParams } from 'react-router'
-import PostCard from '../components/PostCard';
+import PostCard, { type Post } from '../components/PostCard';
 import CreatePostForm from '../components/CreatePostForm';
 import { useState } from 'react';
 import CommunityExtension from '../components/CommunityCardExtension/CommunityExtension';
@@ -36,7 +36,7 @@ const Community = () => {
           <button className='bg-black text-white py-2 px-4 font-bold rounded' onClick={()=>setOpen(true)}> Create a post </button>
         </div>
         <div className='flex-1 p-4 border border-gray-100 h-full mt-3 space-y-5'>
-          {postData?.data.data.map((item, i) => <PostCard key={i} post={item} />)}
+          {postData?.data.data.map((item: Post, i: number) => <PostCard key={i} post={item} />)}
         </div>
       </main>
         <CreatePostForm isOpen={open} onClose={()=>setOpen(false)} communityId={communityId as string}/>

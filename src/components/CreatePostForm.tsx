@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
-import { uploadImage } from '../services/uploadImage';
-import { createCommunity, createPost } from '../services/community';
+
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import { createPost } from '../services/community';
 
 interface CreatePostFormProps {
   isOpen: boolean;

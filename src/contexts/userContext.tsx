@@ -3,7 +3,9 @@ import { jwtDecode } from "jwt-decode";
 
 const UserContext = createContext({
     isAuthenticated: false,
-    updateAuthentication: (status: boolean,  newToken?: string) => {}
+    updateAuthentication: (status: boolean,  newToken?: string) => {
+        console.log(status, newToken, 'updateAuthentication called');
+    }
 });
 
 

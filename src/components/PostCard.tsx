@@ -1,7 +1,7 @@
 import { User, Dot, Heart, MessageSquare } from 'lucide-react'
 
 
-interface Post {
+export interface Post {
   user: { _id: string, name: string };
   dateCreated: string;
   title: string;

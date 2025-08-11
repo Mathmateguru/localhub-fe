@@ -10,8 +10,8 @@ name : string
 description : string
 image : string
 isPublic : boolean
-posts : any[]
-members : any[]
+posts? : unknown[]
+members? : unknown[]
 }
 
 interface CommunityCardProps {
@@ -41,7 +41,7 @@ const CommunityCard = ({community} : CommunityCardProps ) => {
 
           <span className='u-icon'><Users size={20} /> <p>{community?.members?.length || 0 } members </p></span>
 
-          <span className='m-icon'>< MessageSquare size={20} /><p>{community.posts.length}</p></span>
+          <span className='m-icon'>< MessageSquare size={20} /><p>{community.posts?.length || 0}</p></span>
 
         </div>
 
