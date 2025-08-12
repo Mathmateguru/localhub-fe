@@ -23,7 +23,7 @@ const Feeds = () => {
 
 
   const communities = data.data || [];
-
+// joinCommunity
   return (
     <>
       <div className="w-full max-w-7xl p-4 mx-auto my-6 ">

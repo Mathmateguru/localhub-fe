@@ -31,6 +31,14 @@ const getCommunity = async (id: string) => {
   }
 }
 
+const joinCommunity = async (communityId: string) => {
+  try {
+    return await axios.patch(`${baseURL}/community/${communityId}/join`, {}, { headers: getHeaders() });
+  } catch (error) {
+    console.error('Error joining community:', error);
+    throw error;
+  }
+}
 
 interface CommunityData {
   name: string;
@@ -77,6 +85,7 @@ export {
   createCommunity, 
   getCommunity, 
   getCommunityPosts,
-  createPost
+  createPost,
+  joinCommunity
  };
 

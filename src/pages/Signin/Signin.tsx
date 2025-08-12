@@ -26,7 +26,9 @@ const { updateAuthentication } = useUserContext();
       setLoading(false);
       if (res.data.status === 'success') { 
        const token = res.data.accessToken;
-        updateAuthentication(true, token);        navigate('/feeds');
+        const userInfo = res.data.data;
+        updateAuthentication(true, token, userInfo);        
+        navigate('/feeds');
       }
     } catch (error: any) {
       setLoading(false);
